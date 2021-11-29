@@ -16,4 +16,3 @@
     - 运行：勾选bunny的default mesh上对应的脚本，然后运行。基于物理的模拟按l开始，按r复位。
     基于Shape Matching的模拟按l开始，不支持复位。
     - 演示的mp4文件也一并放在了文件夹中。
-    <video src="https://github.com/Teafox-Yang/Teafox-Yang-GAMES103_HW_TEAFOX/blob/main/LAB1-RigidBody_Simulation/Lab1.mp4" width="800px" height="600px" controls="controls"></video>
