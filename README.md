@@ -30,4 +30,19 @@
 	- 演示的mp4文件也一并放在了文件夹中。
 
 1. **FVM_Simulation**  
-	- Lab3仍在提交阶段，暂不上传作业文件。
+	- Lab的目标是使用有限体积方法（Finite Volume Method)实现对于弹性体的模拟，给定的模型为四面体网格，因此主要是计算四面体在特定形变时的F(deformation gradient),然后通过系列计算得到P(the first Piola-Kirchhoff stress),最终计算得到每一个顶点在该四面体中所应收到的力，通过显式积分的方式实现速度和位置的更新。
+	其中，对于P的计算采用了两种实现方式：
+		- **Elastic Forces**:
+        	- 通过得到的F矩阵，计算(Green strain)G=1/2(F.transpose\*F-I)
+        	- 通过计算得到的G，计算(the second Piola-Kirchhoff stress)S=2s1\*G+s0*trace(G)\*I
+        	- 最终得到P=FS
+        - **Method using SVD**:
+        	- 对形变矩阵F进行奇异值分解[U,S,V]=svd(F)，其中S即表示拉伸的对角矩阵。
+        	- 通过StVK的方式来，利用S矩阵的奇异值s1,s2,s3，计算得到W
+        	- 最终计算得到P=Udiag（dW/ds1,dW/ds2,dW/ds3)V.transpose
+    - 运行：勾选house上对应的脚本，然后运行即可开始FVM弹性体模拟，通过鼠标拖动视角，按空格可给物体一个向上的速度。
+	- 演示的mp4文件也一并放在了文件夹中。
+
+
+
+
